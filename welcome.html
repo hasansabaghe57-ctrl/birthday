@@ -334,11 +334,19 @@ if(j<subText.length){
 
 if(subText.charAt(j)=="\n"){
 
-document.getElementById("subtitle").innerHTML+="<br>";
+let subtitle = document.getElementById("subtitle");
+
+if(!subtitle) return;
+
+subtitle.innerHTML+="<br>";
 
 }else{
 
-document.getElementById("subtitle").innerHTML+=subText.charAt(j);
+let subtitle = document.getElementById("subtitle");
+
+if(!subtitle) return;
+
+subtitle.innerHTML+=subText.charAt(j);
 
 }
 
