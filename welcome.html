@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Welcome ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Vazirmatn",sans-serif;
+}
+
+body{
+
+background:#000;
+
+height:100vh;
+
+overflow:hidden;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+position:relative;
+
+color:white;
+
+}
+body::before{
+
+content:"";
+
+position:absolute;
+
+width:900px;
+
+height:900px;
+
+border-radius:50%;
+
+background:radial-gradient(circle,
+rgba(255,20,147,.55),
+rgba(255,20,147,.15),
+transparent 75%);
+
+filter:blur(80px);
+
+animation:glow 8s ease-in-out infinite;
+
+}
+
+body::after{
+
+content:"";
+
+position:absolute;
+
+width:500px;
+
+height:500px;
+
+border-radius:50%;
+
+background:radial-gradient(circle,
+rgba(255,105,180,.45),
+transparent 70%);
+
+right:-150px;
+
+top:-150px;
+
+filter:blur(60px);
+
+animation:glow2 10s ease-in-out infinite;
+
+}
+
+@keyframes glow{
+
+0%{
+
+transform:scale(1);
+
+opacity:.5;
+
+}
+
+50%{
+
+transform:scale(1.25);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:scale(1);
+
+opacity:.5;
+
+}
+
+}
+
+@keyframes glow2{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(70px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+.container{
+
+position:relative;
+
+z-index:10;
+
+text-align:center;
+
+opacity:0;
+
+animation:fadeIn 1.5s ease forwards;
+
+animation-delay:1.2s;
+
+}
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+
+transform:translateY(35px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+.title{
+
+font-size:56px;
+
+font-weight:700;
+
+margin-bottom:18px;
+
+color:#fff;
+
+text-shadow:
+0 0 15px #ff4da6,
+0 0 35px #ff1493,
+0 0 70px #ff1493;
+
+}
+
+.subtitle{
+
+font-size:24px;
+
+line-height:2;
+
+color:#ffd6eb;
+
+margin-bottom:45px;
+
+text-shadow:0 0 18px rgba(255,20,147,.5);
+
+}
+
+.start-btn{
+
+padding:18px 60px;
+
+font-size:22px;
+
+font-weight:bold;
+
+border:none;
+
+border-radius:60px;
+
+cursor:pointer;
+
+color:white;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.15);
+
+box-shadow:0 0 20px rgba(255,20,147,.45);
+
+transition:.35s;
+
+}
+
+.start-btn:hover{
+
+transform:scale(1.08);
+
+background:rgba(255,20,147,.25);
+
+box-shadow:0 0 40px rgba(255,20,147,.9);
+
+}
+.heart{
+
+position:absolute;
+
+bottom:-80px;
+
+color:#ff4da6;
+
+font-size:18px;
+
+opacity:.8;
+
+animation:floatUp linear infinite;
+
+pointer-events:none;
+
+text-shadow:
+0 0 10px #ff1493,
+0 0 20px #ff1493;
+
+}
+
+@keyframes floatUp{
+
+0%{
+
+transform:translateY(0) scale(.5);
+
+opacity:0;
+
+}
+
+15%{
+
+opacity:.9;
+
+}
+
+100%{
+
+transform:translateY(-120vh) scale(1.4);
+
+opacity:0;
+
+}
+
+}
+</style>
+</head>
+<body>
+
+<div class="container" id="container">
+
+<h1 class="title" id="title"></h1>
+
+<p class="subtitle" id="subtitle"></p>
+
+<button class="start-btn" id="startBtn">
+شروع کنیم ❤️
+</button>
+
+</div>
+<script>
+
+const titleText="سلام خوشگل... 🌸";
+const subText="قبل از اینکه ادامه بدی...\n\nچند تا سؤال دارم...";
+
+let i=0;
+let j=0;
+
+function typeTitle(){
+
+if(i<titleText.length){
+
+document.getElementById("title").innerHTML+=titleText.charAt(i);
+i++;
+
+setTimeout(typeTitle,90);
+
+}else{
+
+typeSubtitle();
+
+}
+
+}
+
+function typeSubtitle(){
+
+if(j<subText.length){
+
+if(subText.charAt(j)=="\n"){
+
+document.getElementById("subtitle").innerHTML+="<br>";
+
+}else{
+
+document.getElementById("subtitle").innerHTML+=subText.charAt(j);
+
+}
+
+j++;
+
+setTimeout(typeSubtitle,45);
+
+}
+
+}
+
+setTimeout(typeTitle,1500);
+
+
+// قلب ها
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(15+Math.random()*25)+"px";
+
+heart.style.animationDuration=(6+Math.random()*5)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},11000);
+
+}
+
+setInterval(createHeart,350);
+
+
+// شروع
+
+document.getElementById("startBtn").onclick=function(){
+
+let container=document.getElementById("container");
+
+container.style.opacity="0";
+
+
+setTimeout(()=>{
+
+container.innerHTML=`
+
+<h1 class="title">
+آماده‌ای یه سورپرایز ببینی؟ 🎁
+</h1>
+
+<button class="start-btn" id="yesBtn">
+😍 آره
+</button>
+
+<button class="start-btn" id="noBtn">
+🙈 نه
+</button>
+
+`;
+
+container.style.opacity="1";
+
+
+document.getElementById("yesBtn").onclick=function(){
+
+container.style.opacity="0";
+
+
+setTimeout(()=>{
+
+container.innerHTML=`
+
+<h1 class="title">
+اسم کسی که از همه بیشتر دوستش داری چیه؟ ❤️
+</h1>
+
+<input id="loveInput" placeholder="اینجا بنویس..."
+style="padding:15px;border-radius:30px;font-size:20px;text-align:center;">
+
+<br><br>
+
+<button class="start-btn" id="checkLove">
+ادامه ❤️
+</button>
+
+<p id="errorText"></p>
+
+`;
+
+container.style.opacity="1";
+
+
+document.getElementById("checkLove").onclick=function(){
+
+let value=document.getElementById("loveInput").value.trim().toLowerCase();
+
+
+if(value=="حسن" || value=="hasan"){
+
+
+container.style.opacity="0";
+
+
+setTimeout(()=>{
+
+
+container.innerHTML=`
+
+<h1 class="title">
+ببینم...
+<br><br>
+واسم میو می‌کنی؟ 🐱❤️
+</h1>
+
+
+<input id="meowInput" placeholder="اینجا بنویس..."
+style="padding:15px;border-radius:30px;font-size:20px;text-align:center;">
+
+
+<br><br>
+
+<button class="start-btn" id="checkMeow">
+ادامه ❤️
+</button>
+
+
+<p id="meowError"></p>
+
+`;
+
+
+container.style.opacity="1";
+
+
+document.getElementById("checkMeow").onclick=function(){
+
+let meow=document.getElementById("meowInput").value.trim();
+
+
+if(meow=="میو"){
+
+container.style.opacity="0";
+
+
+setTimeout(()=>{
+
+container.innerHTML=`
+
+<h1 class="title">
+
+یه سورپرایز کوچولو برات دارم... ❤️
+
+</h1>
+
+<p class="subtitle">
+
+آماده باش جوجو...
+
+✨
+
+</p>
+
+`;
+
+
+container.style.opacity="1";
+
+
+setTimeout(()=>{
+
+container.style.opacity="0";
+
+
+setTimeout(()=>{
+
+window.location.href="index.html";
+
+},1000);
+
+
+},3500);
+
+
+},1000);
+
+
+}
+
+
+else{
+
+document.getElementById("meowError").innerHTML=
+"نههههه 🥹💕<br>یه «میو» خوشگل می‌خوام...";
+
+}
+
+
+};
+
+
+},900);
+
+
+
+}else{
+
+
+document.getElementById("errorText").innerHTML=
+"اشتباه گفتی جوجو 🥹💕";
+
+
+}
+
+
+};
+
+
+},900);
+
+
+};
+
+
+},1000);
+
+
+};
+
+</script>
+</body>
+
+</html>
