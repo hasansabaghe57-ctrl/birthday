@@ -327,26 +327,23 @@ typeSubtitle();
 }
 
 }
-
 function typeSubtitle(){
 
-if(j<subText.length){
+if(j < subText.length){
+
+let subtitle = document.getElementById("subtitle");
+
+if(!subtitle){
+    return;
+}
 
 if(subText.charAt(j)=="\n"){
 
-let subtitle = document.getElementById("subtitle");
-
-if(!subtitle) return;
-
-subtitle.innerHTML+="<br>";
+subtitle.innerHTML += "<br>";
 
 }else{
 
-let subtitle = document.getElementById("subtitle");
-
-if(!subtitle) return;
-
-subtitle.innerHTML+=subText.charAt(j);
+subtitle.innerHTML += subText.charAt(j);
 
 }
 
@@ -357,7 +354,6 @@ setTimeout(typeSubtitle,45);
 }
 
 }
-
 setTimeout(typeTitle,1500);
 
 
